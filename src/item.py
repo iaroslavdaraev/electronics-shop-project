@@ -1,3 +1,6 @@
+import csv
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -43,3 +46,9 @@ class Item:
             self.__name = name
         else:
             self.__name = name[:10]
+
+    @classmethod
+    def instantiate_from_csv(cls, file_path):
+        with open(file_path, newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            return reader
