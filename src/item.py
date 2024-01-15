@@ -36,20 +36,30 @@ class Item:
         """
         self.price = self.price * self.pay_rate
 
-    # @property
-    # def name(self):
-    #     return self.__name
-    #
-    # @name.setter
-    # def name(self, name):
-    #     if len(name) < 10:
-    #         self.__name = name
-    #     else:
-    #         self.__name = name[:10]
-    #
-    # @classmethod
-    # def instantiate_from_csv(cls, file_path):
-    #
-    #     with open('../src/items.csv', newline='') as csvfile:
-    #         reader = csv.DictReader(csvfile)
-    #         return reader
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        if len(name) < 10:
+            self.__name = name
+        else:
+            self.__name = name[:10]
+
+    @classmethod
+    def instantiate_from_csv(cls, file_path):
+
+        cls.all.clear()
+
+        with open(file_path, 'r', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                name = row['name']
+                price = float(row['price'])
+                quantity = int(row['quantity'])
+                cls(name, price, quantity)
+
+    @staticmethod
+    def string_to_number(value: str) -> int:
+        return int(float(value))
