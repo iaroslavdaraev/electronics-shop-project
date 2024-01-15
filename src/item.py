@@ -49,6 +49,7 @@ class Item:
     #
     # @classmethod
     # def instantiate_from_csv(cls, file_path):
-    #     with open(file_path, newline='') as csvfile:
+    #
+    #     with open('../src/items.csv', newline='') as csvfile:
     #         reader = csv.DictReader(csvfile)
     #         return reader
