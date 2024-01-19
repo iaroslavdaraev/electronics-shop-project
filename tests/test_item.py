@@ -29,3 +29,11 @@ def test_string_to_number():
     assert Item.string_to_number('7') == 7
     assert Item.string_to_number('8.0') == 8
     assert Item.string_to_number('4.5') == 4
+
+def test_repr():
+    item1 = Item('Notebook', 500.0, 2)
+    assert repr(item1) == "Item('Notebook', 500.0, 2)"
+
+def test_str():
+    item1 = Item('Notebook', 500.0, 2)
+    assert str(item1) == 'Notebook'
