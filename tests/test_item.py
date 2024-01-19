@@ -22,8 +22,8 @@ def test_name():
     assert item2.name == 'СуперСмартфон'
 
 # def test_instantiate_from_csv():
-#     item_instances = Item.instantiate_from_csv(file_path='src/items.csv')
 #     assert isinstance(item_instances, list)
+#     item_instances = Item.instantiate_from_csv(file_path='src/items.csv')
 
 def test_string_to_number():
     assert Item.string_to_number('7') == 7

@@ -1,5 +1,7 @@
 import csv
 
+from config import file_path
+
 
 class Item:
     """
@@ -7,6 +9,7 @@ class Item:
     """
     pay_rate = 1.0
     all = []
+    # file_path
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
