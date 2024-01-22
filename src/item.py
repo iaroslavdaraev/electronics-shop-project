@@ -55,14 +55,18 @@ class Item:
     def instantiate_from_csv(cls, file_path):
 
         cls.all.clear()
-
-        with open(file_path, 'r', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                name = row['name']
-                price = float(row['price'])
-                quantity = int(row['quantity'])
-                cls(name, price, quantity)
+        try:
+            with open(file_path, 'r', newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if 'name' not in row or 'price' not in row or 'quantity' not in row:
+                        raise InstantiateCSVError("Файл item.csv поврежден.")
+                    name = row['name']
+                    price = float(row['price'])
+                    quantity = int(row['quantity'])
+                    cls(name, price, quantity)
+        except FileNotFoundError:
+            raise FileNotFoundError('Отсутствует файл item.csv')
 
     @staticmethod
     def string_to_number(value: str) -> int:
@@ -78,3 +82,12 @@ class Item:
         if not isinstance(other, Item):
             raise ValueError('Складывать можно только экземпляры Item и Phone')
         return self.quantity + other.quantity
+
+
+class InstantiateCSVError(Exception):
+
+    def __init__(self, message):
+        self.message = message
+
+    def __str__(self):
+        return f'{self.message}'

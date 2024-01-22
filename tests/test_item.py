@@ -1,4 +1,8 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
+import csv
+
+import pytest
+
 from config import file_path
 from src.item import Item
 
@@ -31,6 +35,12 @@ def test_instantiate_from_csv():
     assert item1.name == "Смартфон"
     assert item1.price == 500
     assert item1.quantity == 2
+
+
+def test_instantiate_from_csv_not_file():
+    with pytest.raises(FileNotFoundError):
+        with open('../src/ite.csv', encoding='cp1251') as csvfile:
+            csv.DictReader(csvfile)
 
 
 def test_string_to_number():
