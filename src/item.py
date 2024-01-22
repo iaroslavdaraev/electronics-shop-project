@@ -9,6 +9,7 @@ class Item:
     """
     pay_rate = 1.0
     all = []
+
     # file_path
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
@@ -72,3 +73,8 @@ class Item:
 
     def __str__(self):
         return self.__name
+
+    def __add__(self, other):
+        if not isinstance(other, Item):
+            raise ValueError('Складывать можно только экземпляры Item и Phone')
+        return self.quantity + other.quantity
