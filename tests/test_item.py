@@ -1,10 +1,12 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import csv
+from _operator import add
 
 import pytest
 
-from config import file_path
-from src.item import Item
+from config import file_path, broken_file_path
+from src.item import Item, InstantiateCSVError
+from src.phone import Phone
 
 
 def test_calculate_total_price():
@@ -28,6 +30,12 @@ def test_name():
     assert item2.name == 'СуперСмартфон'
 
 
+def test_name_setter():
+    item1 = Item('Смартфон', 500.0, 2)
+    item1.name = 'PDA'
+    assert item1.name == 'PDA'
+
+
 def test_instantiate_from_csv():
     Item.instantiate_from_csv(file_path)
     item1 = Item('Смартфон', 500.0, 2)
@@ -39,8 +47,12 @@ def test_instantiate_from_csv():
 
 def test_instantiate_from_csv_not_file():
     with pytest.raises(FileNotFoundError):
-        with open('../src/ite.csv', encoding='cp1251') as csvfile:
-            csv.DictReader(csvfile)
+        Item.instantiate_from_csv("плохой путь")
+
+
+def test_instantiate_from_csv_corrupted_file():
+    with pytest.raises(InstantiateCSVError):
+        Item.instantiate_from_csv(broken_file_path)
 
 
 def test_string_to_number():
@@ -57,3 +69,11 @@ def test_repr():
 def test_str():
     item1 = Item('Notebook', 500.0, 2)
     assert str(item1) == 'Notebook'
+
+
+def test_add():
+    item1 = Item('Смартфон', 500.0, 2)
+    phone1 = Phone('Nokia', 50000.0, 2, 7)
+    assert add(item1.price,phone1.price) == 50500.0
+    assert add(item1.quantity,phone1.price) == 50002
+    assert add(item1.price,phone1.price) == 50500.0

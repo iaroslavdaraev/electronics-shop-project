@@ -56,7 +56,7 @@ class Item:
 
         cls.all.clear()
         try:
-            with open(file_path, 'r', newline='') as csvfile:
+            with open(file_path, 'r', newline='', encoding="windows-1251") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if 'name' not in row or 'price' not in row or 'quantity' not in row:
