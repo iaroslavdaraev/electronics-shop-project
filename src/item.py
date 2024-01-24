@@ -56,7 +56,7 @@ class Item:
 
         cls.all.clear()
 
-        with open(file_path, 'r', newline='') as csvfile:
+        with open(file_path, 'r', newline='', encoding="windows-1251") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 name = row['name']

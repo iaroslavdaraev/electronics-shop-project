@@ -19,4 +19,4 @@ def test_add():
     phone1 = Phone('Nokia', 50000.0, 2, 7)
     with pytest.raises(ValueError) as e:
         phone1.number_of_sim = 0
-    assert str(e.value) == 'Количество физических SIM-карт должно быть целым числом больше нуля.'
+    assert str(e.value) == 'ValueError: Количество физических SIM-карт должно быть целым числом больше нуля.'
