@@ -1,7 +1,5 @@
 import csv
 
-from config import file_path
-
 
 class Item:
     """

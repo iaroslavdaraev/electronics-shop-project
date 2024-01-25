@@ -20,4 +20,4 @@ def test_add():
     phone1 = Phone('Nokia', 50000.0, 2, 7)
     with pytest.raises(ValueError) as e:
         phone1.number_of_sim = 0
-    assert str(e.value) == 'Cимок должно быть больше 0 и целым числом.'
+    assert str(e.value) == 'РЎРёРјРѕРє РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0 Рё С†РµР»С‹Рј С‡РёСЃР»РѕРј.'

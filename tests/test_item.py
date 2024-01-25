@@ -1,5 +1,5 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
-import csv
+
 from _operator import add
 
 import pytest
@@ -74,6 +74,6 @@ def test_str():
 def test_add():
     item1 = Item('Смартфон', 500.0, 2)
     phone1 = Phone('Nokia', 50000.0, 2, 7)
-    assert add(item1.price,phone1.price) == 50500.0
-    assert add(item1.quantity,phone1.price) == 50002
-    assert add(item1.price,phone1.price) == 50500.0
+    assert add(item1.price, phone1.price) == 50500.0
+    assert add(item1.quantity, phone1.price) == 50002
+    assert add(item1.price, phone1.price) == 50500.0
