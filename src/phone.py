@@ -16,5 +16,5 @@ class Phone(Item):
     @number_of_sim.setter
     def number_of_sim(self, value):
         if not isinstance(value, int) or value <= 0:
-            raise ValueError('ValueError: Êîëè÷åñòâî ôèçè÷åñêèõ SIM-êàðò äîëæíî áûòü öåëûì ÷èñëîì áîëüøå íóëÿ.')
+            raise ValueError('ValueError: ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ„Ð¸Ð·Ð¸Ñ‡ÐµÑÐºÐ¸Ñ… SIM-ÐºÐ°Ñ€Ñ‚ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ñ†ÐµÐ»Ñ‹Ð¼ Ñ‡Ð¸ÑÐ»Ð¾Ð¼ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½ÑƒÐ»Ñ.')
         self.__number_of_sim = value
